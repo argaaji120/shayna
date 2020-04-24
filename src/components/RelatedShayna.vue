@@ -13,7 +13,7 @@
         <div class="col-lg-3 col-sm-6">
           <div class="product-item">
             <div class="pi-pic">
-              <img src="assets/img/products/women-1.jpg" alt />
+              <img src="/img/products/women-1.jpg" alt />
               <ul>
                 <li class="w-icon active">
                   <a href="#">
@@ -40,7 +40,7 @@
         <div class="col-lg-3 col-sm-6">
           <div class="product-item">
             <div class="pi-pic">
-              <img src="assets/img/products/women-2.jpg" alt />
+              <img src="/img/products/women-2.jpg" alt />
               <ul>
                 <li class="w-icon active">
                   <a href="#">
@@ -64,7 +64,7 @@
         <div class="col-lg-3 col-sm-6">
           <div class="product-item">
             <div class="pi-pic">
-              <img src="assets/img/products/women-3.jpg" alt />
+              <img src="/img/products/women-3.jpg" alt />
               <ul>
                 <li class="w-icon active">
                   <a href="#">
@@ -88,7 +88,7 @@
         <div class="col-lg-3 col-sm-6">
           <div class="product-item">
             <div class="pi-pic">
-              <img src="assets/img/products/women-4.jpg" alt />
+              <img src="/img/products/women-4.jpg" alt />
               <ul>
                 <li class="w-icon active">
                   <a href="#">
@@ -117,6 +117,6 @@
 
 <script>
 export default {
-  name: "RelatedProduct"
+  name: "RelatedShayna"
 };
 </script>

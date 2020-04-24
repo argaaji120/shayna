@@ -19,7 +19,7 @@
           <div class="col-lg-2 col-md-2">
             <div class="logo">
               <a href="./index.html">
-                <img src="assets/img/logo_website_shayna.png" alt />
+                <img src="/img/logo_website_shayna.png" alt />
               </a>
             </div>
           </div>
@@ -27,7 +27,7 @@
           <div class="col-lg-3 text-right col-md-3">
             <ul class="nav-right">
               <li class="cart-icon">
-                Keranjang Belanja
+                Keranjang Belanja &nbsp;
                 <a href="#">
                   <i class="icon_bag_alt"></i>
                   <span>3</span>
@@ -39,7 +39,7 @@
                       <tbody>
                         <tr>
                           <td class="si-pic">
-                            <img src="assets/img/select-product-1.jpg" alt />
+                            <img src="/img/select-product-1.jpg" alt />
                           </td>
                           <td class="si-text">
                             <div class="product-selected">
@@ -53,7 +53,7 @@
                         </tr>
                         <tr>
                           <td class="si-pic">
-                            <img src="assets/img/select-product-2.jpg" alt />
+                            <img src="/img/select-product-2.jpg" alt />
                           </td>
                           <td class="si-text">
                             <div class="product-selected">

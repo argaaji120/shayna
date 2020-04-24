@@ -39,7 +39,7 @@
                     <tbody>
                       <tr>
                         <td class="cart-pic first-row">
-                          <img src="assets/img/cart-page/product-1.jpg" />
+                          <img src="img/cart-page/product-1.jpg" />
                         </td>
                         <td class="cart-title first-row text-center">
                           <h5>Pure Pineapple</h5>
@@ -53,7 +53,7 @@
                       </tr>
                       <tr>
                         <td class="cart-pic first-row">
-                          <img src="assets/img/cart-page/product-1.jpg" />
+                          <img src="img/cart-page/product-1.jpg" />
                         </td>
                         <td class="cart-title first-row text-center">
                           <h5>Pure Pineapple</h5>
@@ -165,7 +165,7 @@ import HeaderShayna from "@/components/HeaderShayna.vue";
 import FooterShayna from "@/components/FooterShayna.vue";
 
 export default {
-  name: "ShoppingCart",
+  name: "cart",
   components: {
     HeaderShayna,
     FooterShayna

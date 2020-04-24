@@ -41,7 +41,7 @@
                       @click="changeImage(thumbs[0])"
                       :class="thumbs[0] == image_default ? 'active' : '' "
                     >
-                      <img src="assets/img/mickey1.jpg" />
+                      <img src="/img/mickey1.jpg" />
                     </div>
 
                     <div
@@ -49,7 +49,7 @@
                       @click="changeImage(thumbs[1])"
                       :class="thumbs[1] == image_default ? 'active' : '' "
                     >
-                      <img src="assets/img/mickey2.jpg" />
+                      <img src="/img/mickey2.jpg" />
                     </div>
 
                     <div
@@ -57,7 +57,7 @@
                       @click="changeImage(thumbs[2])"
                       :class="thumbs[2] == image_default ? 'active' : '' "
                     >
-                      <img src="assets/img/mickey3.jpg" />
+                      <img src="/img/mickey3.jpg" />
                     </div>
 
                     <div
@@ -65,7 +65,7 @@
                       @click="changeImage(thumbs[3])"
                       :class="thumbs[3] == image_default ? 'active' : '' "
                     >
-                      <img src="assets/img/mickey4.jpg" />
+                      <img src="/img/mickey4.jpg" />
                     </div>
                   </carousel>
                 </div>
@@ -87,7 +87,7 @@
                     <h4>$495.00</h4>
                   </div>
                   <div class="quantity">
-                    <router-link to="shopping-cart" class="primary-btn pd-cart">Add To Cart</router-link>
+                    <router-link to="/cart" class="primary-btn pd-cart">Add To Cart</router-link>
                     <!-- <a href="shopping-cart.html" class="primary-btn pd-cart">Add To Cart</a> -->
                   </div>
                 </div>
@@ -99,7 +99,7 @@
     </section>
     <!-- Product Shop Section End -->
 
-    <RelatedProductShayna />
+    <RelatedShayna />
     <FooterShayna />
   </div>
 </template>
@@ -108,26 +108,26 @@
 // @ is an alias to /src
 import HeaderShayna from "@/components/HeaderShayna.vue";
 import FooterShayna from "@/components/FooterShayna.vue";
-import RelatedProductShayna from "@/components/RelatedProductShayna.vue";
+import RelatedShayna from "@/components/RelatedShayna.vue";
 
 import carousel from "vue-owl-carousel";
 
 export default {
-  name: "Product",
+  name: "product",
   components: {
     HeaderShayna,
     FooterShayna,
-    RelatedProductShayna,
+    RelatedShayna,
     carousel
   },
   data() {
     return {
-      image_default: "assets/img/mickey1.jpg",
+      image_default: "/img/mickey1.jpg",
       thumbs: [
-        "assets/img/mickey1.jpg",
-        "assets/img/mickey2.jpg",
-        "assets/img/mickey3.jpg",
-        "assets/img/mickey4.jpg"
+        "/img/mickey1.jpg",
+        "/img/mickey2.jpg",
+        "/img/mickey3.jpg",
+        "/img/mickey4.jpg"
       ]
     };
   },

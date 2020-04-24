@@ -2,7 +2,7 @@
   <div class="success">
     <div class="d-flex success-checkout align-items-center justify-content-center">
       <div class="col col-lg-4 text-center">
-        <img src="assets/img/success-buy.png" alt width="294" />
+        <img src="img/success-buy.png" alt width="294" />
         <h3 class="mt-4">Sukses Terbayar!</h3>
         <p
           class="mt-2"
@@ -16,6 +16,6 @@
 
 <script>
 export default {
-  name: "SuccessPaid"
+  name: "success"
 };
 </script>

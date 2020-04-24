@@ -2,7 +2,7 @@
   <div class="home">
     <HeaderShayna />
     <HeroShayna />
-    <BannerShayna />
+    <WomanShayna />
     <InstaShayna />
     <PartnerShayna />
     <FooterShayna />
@@ -11,28 +11,23 @@
 
 <script>
 // @ is an alias to /src
+// import HelloWorld from "@/components/HelloWorld.vue";
 import HeaderShayna from "@/components/HeaderShayna.vue";
 import HeroShayna from "@/components/HeroShayna.vue";
-import BannerShayna from "@/components/BannerShayna.vue";
+import WomanShayna from "@/components/WomanShayna.vue";
 import InstaShayna from "@/components/InstaShayna.vue";
 import PartnerShayna from "@/components/PartnerShayna.vue";
 import FooterShayna from "@/components/FooterShayna.vue";
 
 export default {
-  name: "Home",
+  name: "home",
   components: {
     HeaderShayna,
     HeroShayna,
-    BannerShayna,
+    WomanShayna,
     InstaShayna,
     PartnerShayna,
     FooterShayna
   }
 };
 </script>
-
-<style scoped>
-.carousel-bg {
-  background-image: url("/assets/img/hero-1.jpg");
-}
-</style>
