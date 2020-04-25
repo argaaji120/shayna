@@ -10,7 +10,10 @@
                 <img v-bind:src="itemProduct.galleries[0].photo" />
                 <ul>
                   <li class="w-icon active">
-                    <a href="#">
+                    <a
+                      href="javascript:void(0)"
+                      @click="saveToCart(itemProduct.id, itemProduct.name, itemProduct.price, itemProduct.galleries[0].photo)"
+                    >
                       <i class="icon_bag_alt"></i>
                     </a>
                   </li>
@@ -52,10 +55,33 @@ export default {
   },
   data() {
     return {
-      products: []
+      products: [],
+      userCart: []
     };
   },
+  methods: {
+    saveToCart(productId, productName, productPrice, productPhoto) {
+      var storedProduct = {
+        id: productId,
+        name: productName,
+        price: productPrice,
+        photo: productPhoto
+      };
+      this.userCart.push(storedProduct);
+      const parsed = JSON.stringify(this.userCart);
+      localStorage.setItem("userCart", parsed);
+      // window.location.reload();
+    }
+  },
   mounted() {
+    if (localStorage.getItem("userCart")) {
+      try {
+        this.userCart = JSON.parse(localStorage.getItem("userCart"));
+      } catch (e) {
+        localStorage.removeItem("userCart");
+      }
+    }
+
     axios
       .get("http://127.0.0.1:8000/api/products")
       .then(res => (this.products = res.data.data.data))

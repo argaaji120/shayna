@@ -124,6 +124,7 @@ export default {
       this.userCart.push(storedProduct);
       const parsed = JSON.stringify(this.userCart);
       localStorage.setItem("userCart", parsed);
+      window.location.reload();
     }
   },
   mounted() {
