@@ -29,7 +29,7 @@
                 <div class="product-pic-zoom">
                   <img class="product-big-img" :src="image_default" />
                 </div>
-                <div class="product-thumbs">
+                <div class="product-thumbs" v-if="productDetail.galleries.length > 0">
                   <carousel
                     :nav="false"
                     :dots="false"
@@ -37,35 +37,13 @@
                     class="product-thumbs-track ps-slider"
                   >
                     <div
+                      v-for="thumbs in productDetail.galleries"
+                      :key="thumbs.id"
                       class="pt"
-                      @click="changeImage(thumbs[0])"
-                      :class="thumbs[0] == image_default ? 'active' : '' "
+                      @click="changeImage(thumbs.photo)"
+                      :class="thumbs.photo == image_default ? 'active' : '' "
                     >
-                      <img src="/img/mickey1.jpg" />
-                    </div>
-
-                    <div
-                      class="pt"
-                      @click="changeImage(thumbs[1])"
-                      :class="thumbs[1] == image_default ? 'active' : '' "
-                    >
-                      <img src="/img/mickey2.jpg" />
-                    </div>
-
-                    <div
-                      class="pt"
-                      @click="changeImage(thumbs[2])"
-                      :class="thumbs[2] == image_default ? 'active' : '' "
-                    >
-                      <img src="/img/mickey3.jpg" />
-                    </div>
-
-                    <div
-                      class="pt"
-                      @click="changeImage(thumbs[3])"
-                      :class="thumbs[3] == image_default ? 'active' : '' "
-                    >
-                      <img src="/img/mickey4.jpg" />
+                      <img :src="thumbs.photo" />
                     </div>
                   </carousel>
                 </div>
@@ -73,22 +51,20 @@
               <div class="col-lg-6">
                 <div class="product-details text-left">
                   <div class="pd-title">
-                    <span>oranges</span>
-                    <h3>Pure Pineapple</h3>
+                    <span>{{ productDetail.type }}</span>
+                    <h3>{{ productDetail.name }}</h3>
                   </div>
                   <div class="pd-desc">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis, error officia. Rem aperiam laborum voluptatum vel, pariatur modi hic provident eum iure natus quos non a sequi, id accusantium! Autem.</p>
-                    <p>
-                      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam possimus quisquam animi, commodi, nihil voluptate nostrum neque architecto illo officiis doloremque et corrupti cupiditate voluptatibus error illum. Commodi expedita animi nulla aspernatur.
-                      Id asperiores blanditiis, omnis repudiandae iste inventore cum, quam sint molestiae accusamus voluptates ex tempora illum sit perspiciatis. Nostrum dolor tenetur amet, illo natus magni veniam quia sit nihil dolores.
-                      Commodi ratione distinctio harum voluptatum velit facilis voluptas animi non laudantium, id dolorem atque perferendis enim ducimus? A exercitationem recusandae aliquam quod. Itaque inventore obcaecati, unde quam
-                      impedit praesentium veritatis quis beatae ea atque perferendis voluptates velit architecto?
-                    </p>
-                    <h4>$495.00</h4>
+                    <p v-html="productDetail.description"></p>
+                    <h4>Rp. {{ productDetail.price }}</h4>
                   </div>
                   <div class="quantity">
-                    <router-link to="/cart" class="primary-btn pd-cart">Add To Cart</router-link>
-                    <!-- <a href="shopping-cart.html" class="primary-btn pd-cart">Add To Cart</a> -->
+                    <!-- <router-link to="/cart" class="primary-btn pd-cart">Add To Cart</router-link> -->
+                    <a
+                      href="#"
+                      class="primary-btn pd-cart"
+                      @click="saveToCart(productDetail.id, productDetail.name, productDetail.price, productDetail.galleries[0].photo)"
+                    >Add To Cart</a>
                   </div>
                 </div>
               </div>
@@ -111,6 +87,7 @@ import FooterShayna from "@/components/FooterShayna.vue";
 import RelatedShayna from "@/components/RelatedShayna.vue";
 
 import carousel from "vue-owl-carousel";
+import axios from "axios";
 
 export default {
   name: "product",
@@ -122,19 +99,50 @@ export default {
   },
   data() {
     return {
-      image_default: "/img/mickey1.jpg",
-      thumbs: [
-        "/img/mickey1.jpg",
-        "/img/mickey2.jpg",
-        "/img/mickey3.jpg",
-        "/img/mickey4.jpg"
-      ]
+      image_default: "",
+      productDetail: [],
+      userCart: []
     };
   },
   methods: {
     changeImage(urlImage) {
       this.image_default = urlImage;
+    },
+    setDataImage(data) {
+      // replace object productDetail dengan data dari API
+      this.productDetail = data;
+      // replace image_default dengan data dari API
+      this.image_default = data.galleries[0].photo;
+    },
+    saveToCart(productId, productName, productPrice, productPhoto) {
+      var storedProduct = {
+        id: productId,
+        name: productName,
+        price: productPrice,
+        photo: productPhoto
+      };
+      this.userCart.push(storedProduct);
+      const parsed = JSON.stringify(this.userCart);
+      localStorage.setItem("userCart", parsed);
     }
+  },
+  mounted() {
+    if (localStorage.getItem("userCart")) {
+      try {
+        this.userCart = JSON.parse(localStorage.getItem("userCart"));
+      } catch (e) {
+        localStorage.removeItem("userCart");
+      }
+    }
+
+    axios
+      .get("http://127.0.0.1:8000/api/products", {
+        params: {
+          slug: this.$route.params.slug
+        }
+      })
+      .then(res => this.setDataImage(res.data.data))
+      .catch(err => console.log(err));
   }
 };
 </script>
